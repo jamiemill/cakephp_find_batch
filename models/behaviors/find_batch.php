@@ -23,7 +23,8 @@ class FindBatchBehavior extends ModelBehavior {
 				'totalRecords'=>$totalRecords,
 				'offset'=>$nextOffset,
 				'start'=>$nextOffset+1,
-				'end'=>$nextOffset+count($records)
+				'end'=>$nextOffset+count($records),
+				'alias'=>$model->alias
 			);
 			
 			if(is_callable($callback)) {
