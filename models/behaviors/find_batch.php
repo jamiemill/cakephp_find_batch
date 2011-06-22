@@ -14,7 +14,11 @@ class FindBatchBehavior extends ModelBehavior {
 		), $settings);
 
 		$nextOffset = 0;
-		$totalRecords = $model->find('count', $settings);
+
+		$countSettings = $settings;
+		unset($countSettings['fields']);
+		unset($countSettings['limit']);
+		$totalRecords = $model->find('count', $countSettings);
 
 		while($records = $model->find('all', am($settings, array(
 			'offset'=>$nextOffset
